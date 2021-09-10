@@ -22,7 +22,9 @@ describe('Binance Smart Chain Wallet', () => {
   describe('constructor', () => {
     it('with seed', () => {
       const wallet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         seed: RANDOM_SEED,
       });
       assert.ok(wallet);
@@ -31,7 +33,9 @@ describe('Binance Smart Chain Wallet', () => {
 
     it('with publicKey', () => {
       const wallet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         publicKey: readOnlyWallet.etherWallet.pubKey.toString('hex'),
       });
       assert.strictEqual(wallet.addressString, readOnlyWallet.addressString);
@@ -43,7 +47,9 @@ describe('Binance Smart Chain Wallet', () => {
   describe('lock', () => {
     it('works', () => {
       const wallet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         seed: RANDOM_SEED,
       });
       assert.strictEqual(wallet.isLocked, false);
@@ -56,7 +62,9 @@ describe('Binance Smart Chain Wallet', () => {
   describe('unlock', () => {
     it('works', () => {
       const wallet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         publicKey: RANDOM_SEED_PUB_KEY,
       });
       assert.strictEqual(wallet.isLocked, true);
@@ -69,7 +77,9 @@ describe('Binance Smart Chain Wallet', () => {
   describe('publicKey', () => {
     it('works', () => {
       const wallet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         seed: RANDOM_SEED,
       });
       const publicKey = wallet.publicKey();
@@ -78,12 +88,16 @@ describe('Binance Smart Chain Wallet', () => {
 
     it('key is valid', () => {
       const wallet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         seed: RANDOM_SEED,
       });
       const publicKey = wallet.publicKey();
       const secondWalet = new Wallet({
-        networkName: 'binance-smart-chain',
+        crypto: {
+          platform: 'binance-smart-chain',
+        },
         publicKey,
       });
       secondWalet.unlock(RANDOM_SEED);
