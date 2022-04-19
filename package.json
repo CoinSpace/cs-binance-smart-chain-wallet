@@ -24,22 +24,32 @@
     "hdkey": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-coinspace": "^1.1.3",
-    "mocha": "^9.0.0"
+    "eslint": "^8.10.0",
+    "eslint-config-coinspace": "^1.2.1",
+    "mocha": "^9.2.2"
   },
   "eslintConfig": {
     "extends": [
       "coinspace"
     ],
+    "env": {
+      "node": true
+    },
     "parserOptions": {
+      "ecmaVersion": 2022,
+      "requireConfigFile": false,
       "sourceType": "module"
     },
-    "env": {
-      "mocha": true,
-      "node": true,
-      "browser": true,
-      "commonjs": true
-    }
+    "overrides": [
+      {
+        "files": [
+          "*.test.js",
+          "test/*"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
   }
 }
